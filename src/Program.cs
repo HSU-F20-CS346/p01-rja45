@@ -57,13 +57,13 @@ namespace PortScanner
                 //Checks for COMMON keyword
                 if (mainPorts[0].ToUpper() == "COMMON")
                 {
-                    for (int i = 0; i < 1024; i++)
+                    for (int i = 1; i < 1024; i++)
                     {
                         var client = new TcpClient();
                         var result = client.BeginConnect(mainArgs[0], i, null, null);
 
                         //result.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(1));
-                        result.AsyncWaitHandle.WaitOne(TimeSpan.FromMilliseconds(1000));
+                        result.AsyncWaitHandle.WaitOne(TimeSpan.FromMilliseconds(150));
 
                         if (!client.Connected)
                         {
@@ -105,7 +105,7 @@ namespace PortScanner
                     var result = client.BeginConnect(mainArgs[0], lowPort, null, null);
 
                     //result.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(1));
-                    result.AsyncWaitHandle.WaitOne(TimeSpan.FromMilliseconds(1000));
+                    result.AsyncWaitHandle.WaitOne(TimeSpan.FromMilliseconds(150));
 
                     if (!client.Connected)
                     {
@@ -185,7 +185,7 @@ namespace PortScanner
                             var result = client.BeginConnect(mainArgs[0], i, null, null);
 
                             //result.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(1));
-                            result.AsyncWaitHandle.WaitOne(TimeSpan.FromMilliseconds(1000));
+                            result.AsyncWaitHandle.WaitOne(TimeSpan.FromMilliseconds(150));
 
                             if (!client.Connected)
                             {
